@@ -24,11 +24,9 @@ final class FrogRaceGame: Game {
 
     func onUpdate(window: any Window) throws(SDL_Error) {
         draw_entitites()
-      try renderer
-        .clear(color: .gray)
-        .debug(text: message, position: [12, 12], scale: [2, 2])
-        
-        .present()
+        try renderer
+            .debug(text: message, position: [12, 12], scale: [2, 2])
+            .present()
     }
 
     func onEvent(window: any Window, _ event: SDL_Event) throws(SDL_Error) {
@@ -39,9 +37,15 @@ final class FrogRaceGame: Game {
     func draw_entitites() {
         let entities = state.get_entities()
         for entity in entities {
-            debugPrint(entity.kind())
-            debugPrint(entity.x())
-            debugPrint(entity.y())
+            switch entity.kind() {
+                case Libbit.EntityKind.Racer:
+                    if let resourcePath = Bundle.main.resourcePath {
+                        let imgName = "frogsprite.png"
+                        let path = resourcePath + "/" + imgName
+                }
+                case _: ()
+            }
+            let texture =
         }
     }
     
